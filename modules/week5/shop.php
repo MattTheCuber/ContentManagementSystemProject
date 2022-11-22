@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -13,7 +14,6 @@
                         $product = substr($key, 0, -9);
                         $quantity = $_POST[$key];
 
-                        if (session_status() == PHP_SESSION_NONE) session_start();
                         $_SESSION["cart"][$product] = $quantity;
                     }
                 }

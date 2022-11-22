@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -8,7 +9,6 @@
     <body>
         <div class="container">
             <?php
-                if (session_status() == PHP_SESSION_NONE) session_start();
                 if (isset($_POST["checkout"])) {
                     unset($_SESSION['cart']);
                 } else if (isset($_SESSION["cart"])) {
@@ -31,7 +31,6 @@
                 <br>
 
                 <?php
-                    if (session_status() == PHP_SESSION_NONE) session_start();
                     if (isset($_SESSION['cart'])) {
                         include '../../data/items.php';
 

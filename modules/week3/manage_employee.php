@@ -1,5 +1,5 @@
 <?php
-    if (session_status() == PHP_SESSION_NONE) session_start();
+    session_start();
     if ($_SESSION['loginlevel'] != 1) {
         header('Location: ../week4/login.php');
     }

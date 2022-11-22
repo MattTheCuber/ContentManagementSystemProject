@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -10,19 +11,16 @@
             <?php
                 if (isset($_POST['username'])) {
                     if ($_POST['username'] == 'admin' && $_POST['password'] == 'admin') {
-                        if (session_status() == PHP_SESSION_NONE) session_start();
                         $_SESSION['username'] = $_POST['username'];
                         $_SESSION['loginlevel'] = 1;
                         
                         echo '<p class="success">You have successfully logged in as an administrator</p>';
                     } else if ($_POST['username'] == 'publisher' && $_POST['password'] == 'publisher') {
-                        if (session_status() == PHP_SESSION_NONE) session_start();
                         $_SESSION['username'] = $_POST['username'];
                         $_SESSION['loginlevel'] = 2;
                         
                         echo '<p class="success">You have successfully logged in as a publisher</p>';
                     } else if ($_POST['username'] == 'customer' && $_POST['password'] == 'customer') {
-                        if (session_status() == PHP_SESSION_NONE) session_start();
                         $_SESSION['username'] = $_POST['username'];
                         $_SESSION['loginlevel'] = 3;
                         

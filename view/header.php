@@ -16,7 +16,6 @@
         <li class="dropdown">
             <a class="dropbtn" href="https://matthewvine.site/modules/week1/our_team.php">Our Team</a>
             <?php
-                if (session_status() == PHP_SESSION_NONE) session_start();
                 if (isset($_SESSION['loginlevel']) && $_SESSION['loginlevel'] == 1) {
                     echo "<div class='dropdown-content'>";
                     echo "<a class='second' href='https://matthewvine.site/modules/week3/manage_employee.php'>Manage Team</a>";
@@ -38,15 +37,15 @@
         <li>
             <a href="
                 <?php
-                    if (session_status() == PHP_SESSION_NONE) session_start();
                     echo isset($_SESSION['loginlevel']) ? "https://matthewvine.site/modules/week4/logout.php" : "https://matthewvine.site/modules/week4/login.php"
                 ?>
             ">
-                <?php if (session_status() == PHP_SESSION_NONE) session_start(); echo isset($_SESSION['loginlevel']) ? "Logout" : "Login" ?>
+                <?php
+                    echo isset($_SESSION['loginlevel']) ? "Logout" : "Login"
+                ?>
             </a>
         </li>
         <?php
-            if (session_status() == PHP_SESSION_NONE) session_start();
             if (isset($_SESSION['cart']) || (isset($_SESSION['loginlevel']) && $_SESSION['loginlevel'] == 3)) {
                 echo "<li><a href='https://matthewvine.site/modules/week5/cart.php'>Cart</a></li>";
             }
