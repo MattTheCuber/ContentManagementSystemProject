@@ -14,7 +14,7 @@
                 
                 <?php
                     echo("<h3>Email</h3>");
-                    echo("support@localhost");
+                    echo("support@matthewvine.site");
 
                     echo("<br><br><h3>Phone Numbers</h3>");
                     echo("Support: 555-555-5551 <br> Sales: 555-555-5552 <br> Billing: 555-555-5553");

@@ -17,7 +17,7 @@
                     <br>
                     Items must be in the original condition and packaging.
                     <br>
-                    To receive a refund please contact us at <a href="mailto:support@localhost">support@localhost</a>.
+                    To receive a refund please contact us at <a href="mailto:support@matthewvine.site">support@matthewvine.site</a>.
                 </p>
             </div>
 

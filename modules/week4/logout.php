@@ -5,5 +5,5 @@
    session_destroy();
    
    echo 'You have logged out';
-   header('Location: https://localhost');
+   header('Location: https://matthewvine.site');
 ?>
