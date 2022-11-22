@@ -31,6 +31,7 @@
                 <br>
 
                 <?php
+                    if (session_status() == PHP_SESSION_NONE) session_start();
                     if (isset($_SESSION['cart'])) {
                         include '../../data/items.php';
 
@@ -46,6 +47,7 @@
 
                             echo "<div style='align-self: center'>";
                             echo "<div>Quantity: " . $value . "</div>";
+                            echo "<div>Price: $" . $product['Price'] * $value . "</div>";
                             echo "<form action='" . htmlspecialchars($_SERVER["PHP_SELF"]) . "' method='post'>";
                             echo "<input style='padding: 6px; margin-top: 6px' class='button' type='submit' name='" . $key . "_remove' value='Remove from Cart'>";
                             echo "</form>";

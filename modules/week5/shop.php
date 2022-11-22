@@ -37,7 +37,7 @@
                             echo "<p>" . $$product["Description"] . "</p>";
 
                             echo "<div style='display: flex; justify-content: space-between'>";
-                            echo "<p style='text-align: left'>Price: " . $$product["Price"] . "<br>Quantity: " . $$product["Quantity"] . "</p>";
+                            echo "<p style='text-align: left'>Price: $" . $$product["Price"] . "<br>Quantity: " . $$product["Quantity"] . "</p>";
                             echo "<form style='display:flex; flex-direction: column' action='" . htmlspecialchars($_SERVER["PHP_SELF"]) . "' method='post'>";
                             echo "<input type='number' name='" . $product . "_quantity' value='1' min='1' max='" . $$product["Quantity"] . "'>";
                             echo "<input style='padding: 6px; margin-top: 6px' class='button' type='submit' name='add' value='Add to Cart'>";

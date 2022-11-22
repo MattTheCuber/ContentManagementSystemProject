@@ -35,7 +35,21 @@
             </div>
         </li>
         <li><a href="https://matthewvine.site/modules/week1/contact_us.php">Contact Us</a></li>
-        <li><a href="<?php echo isset($_SESSION['loginlevel']) ? "https://matthewvine.site/modules/week4/logout.php" : "https://matthewvine.site/modules/week4/login.php" ?>"><?php echo isset($_SESSION['loginlevel']) ? "Logout" : "Login" ?></a></li>
-        <?php if (isset($_SESSION['cart']) || (isset($_SESSION['loginlevel']) && $_SESSION['loginlevel'] == 3)) echo "<li><a href='https://matthewvine.site/modules/week5/cart.php'>Cart</a></li>" ?>
+        <li>
+            <a href="
+                <?php
+                    if (session_status() == PHP_SESSION_NONE) session_start();
+                    echo isset($_SESSION['loginlevel']) ? "https://matthewvine.site/modules/week4/logout.php" : "https://matthewvine.site/modules/week4/login.php"
+                ?>
+            ">
+                <?php if (session_status() == PHP_SESSION_NONE) session_start(); echo isset($_SESSION['loginlevel']) ? "Logout" : "Login" ?>
+            </a>
+        </li>
+        <?php
+            if (session_status() == PHP_SESSION_NONE) session_start();
+            if (isset($_SESSION['cart']) || (isset($_SESSION['loginlevel']) && $_SESSION['loginlevel'] == 3)) {
+                echo "<li><a href='https://matthewvine.site/modules/week5/cart.php'>Cart</a></li>";
+            }
+        ?>
     </ul>
 </div>
