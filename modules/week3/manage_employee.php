@@ -1,34 +1,30 @@
 <?php
-    session_start();
-    if ($_SESSION['authenticated'] != true) {
-        header('Location: ../week4/sessions.php');
+    if (session_status() == PHP_SESSION_NONE) session_start();
+    if ($_SESSION['loginlevel'] != 1) {
+        header('Location: ../week4/login.php');
     }
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="description" content="Matthew Vine's site for Liberty University Online's CSIS 410: D01">
-        <meta name="keywords" content="HTML, CSS, PHP, Matthew Vine, Liberty University, CSIS 410">
-        <meta name="author" content="Matthew Vine">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <?php include "../../view/meta.php"; ?>
         <link rel="stylesheet" href="../../style.css">
-        <title>Module 3: Week 3 Arrays Assignment | Matthew Vine</title>
+        <title>Manage Employee | Matthew Vine</title>
     </head>
     <body>
         <div class="container">
             <?php include "../../view/header.php"; ?>
 
             <div class="content">
-                <h1>Module 3: Week 3 Arrays Assignment</h1>
+                <h1>Manage Employee</h1>
 
                 <form method="post" action="../week1/employee.php">
                     Employee:
                     <select name="employee" onchange="employeeSelection(this.value);">
                         <option value="add">Add Employee</option>
                         <?php
-                            include '../../data/variables.php';
+                            include '../../data/employees.php';
 
                             foreach (array_keys($employees) as $employee) {
                                 echo "<option value='" . $employee . "'>" . $$employee["Name"] . "</option>";

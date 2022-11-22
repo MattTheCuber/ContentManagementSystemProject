@@ -1,30 +1,19 @@
-<?php
-    session_start();
-    if ($_SESSION['authenticated'] != true) {
-        header('Location: ../week4/sessions.php');
-    }
-?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="description" content="Matthew Vine's site for Liberty University Online's CSIS 410: D01">
-        <meta name="keywords" content="HTML, CSS, PHP, Matthew Vine, Liberty University, CSIS 410">
-        <meta name="author" content="Matthew Vine">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <?php include "../../view/meta.php"; ?>
         <link rel="stylesheet" href="../../style.css">
-        <title>Module 1: Week 1 Variables Assignment | Matthew Vine</title>
+        <title>Our Team | Matthew Vine</title>
     </head>
     <body>
         <div class="container">
             <?php include "../../view/header.php"; ?>
 
             <div class="content">
-                <h1>Module 1: Week 1 Variables Assignment</h1>
+                <h1>Our Team</h1>
 
-                <h2>Organization Chart</h2>
                 <?php
-                    include '../../data/variables.php';
+                    include '../../data/employees.php';
 
                     $grid = array(
                         array(null, null, null, 'matthewvine', null, null, null),
@@ -52,7 +41,6 @@
                                 echo "<img src='../" . $$item['Image'] . "' alt='" . $$item['Name'] . "'>";
                                 echo "<h1><a href='employee.php?name=" . $item . "'>" . $$item['Name'] . "</a></h1>";
                                 echo "<div class='employee-info'>";
-                                echo "<h3>" . $$item['Degree'] . "</h3>";
                                 echo "<h4>" . $$item['Title'] . "</h4>";
                                 echo "</div>";
                                 echo "</div>";

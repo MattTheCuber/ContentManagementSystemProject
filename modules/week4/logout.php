@@ -1,9 +1,9 @@
 <?php
    session_start();
    unset($_SESSION["username"]);
-   unset($_SESSION["authenticated"]);
+   unset($_SESSION["loginlevel"]);
    session_destroy();
    
    echo 'You have logged out';
-   header('Location: sessions.php');
+   header('Location: https://localhost');
 ?>

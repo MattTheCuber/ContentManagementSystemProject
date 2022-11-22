@@ -1,22 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="description" content="Matthew Vine's site for Liberty University Online's CSIS 410: D01">
-        <meta name="keywords" content="HTML, CSS, PHP, Matthew Vine, Liberty University, CSIS 410">
-        <meta name="author" content="Matthew Vine">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <?php include "../../view/meta.php"; ?>
         <link rel="stylesheet" href="../../style.css">
-        <title>Forms | Matthew Vine</title>
+        <title>Review | Matthew Vine</title>
     </head>
     <body>
         <div class="container">
             <?php include "../../view/header.php"; ?>
 
             <div class="content">
-                <h1>Module 2: Week 2 Forms Assignment</h1>
+                <h1>Review</h1>
 
-                <p><a href="forms.php" class="button">← Go back</a></p>
+                <p><a href="review_items.php" class="button">← Go back</a></p>
                 <br><br>
 
                 <?php

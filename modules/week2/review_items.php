@@ -1,40 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="description" content="Matthew Vine's site for Liberty University Online's CSIS 410: D01">
-        <meta name="keywords" content="HTML, CSS, PHP, Matthew Vine, Liberty University, CSIS 410">
-        <meta name="author" content="Matthew Vine">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <?php include "../../view/meta.php"; ?>
         <link rel="stylesheet" href="../../style.css">
-        <title>Forms | Matthew Vine</title>
+        <title>Review Items | Matthew Vine</title>
     </head>
     <body>
         <div class="container">
             <?php include "../../view/header.php"; ?>
 
             <div class="content">
-                <h1>Module 2: Week 2 Forms Assignment</h1>
+                <h1>Review Items</h1>
                 <br>
 
-                <div id="buttons">
-                    <button class="button" onclick="get()">GET</button>
-                    <button class="button" onclick="post()">POST</button>
-                </div>
-                <script>
-                    function get() {
-                        document.getElementById("buttons").style.display = 'none';
-                        document.getElementById("form").style.display = 'block';
-                        document.getElementById("form").method = 'get';
-                    }
-                    function post() {
-                        document.getElementById("buttons").style.display = 'none';
-                        document.getElementById("form").style.display = 'block';
-                        document.getElementById("form").method = 'post';
-                    }
-                </script>
-
-                <form id="form" style="display: none" action="display.php" method="get">
+                <form id="form" action="review.php" method="post">
                     Enter your name: <input type="text" name="name" required>
                     <br><br>
 
