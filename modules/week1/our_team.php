@@ -50,6 +50,57 @@
                     }
                     echo "</div>";
                 ?>
+
+                <br><br>
+                <?php
+                    $conn = mysqli_connect("mysql.matthewvine.site", "matthewvine", "password", "matthewvine");
+                    if (!$conn) die("Connection failed: " . mysqli_connect_error());
+                    
+                    foreach ($_POST as $key => $value) {
+                        if (str_contains($key, "_delete")) {
+                            $id = substr($key, 0, -7);
+                            $sql = "DELETE FROM Comments WHERE ID=" . $id;
+
+                            if ($conn->query($sql) === TRUE) {
+                                echo "<p class='success'>Successfully deleted record</p>";
+                            } else {
+                                echo "<p class='error'>Error deleting record: " . $conn->error . "</p>";
+                            }
+                        }
+                    }
+                    
+                    $sql = "SELECT * FROM Comments";
+                    $result = $conn->query($sql);
+                    
+                    if ($result->num_rows > 0) {
+                        while($row = $result->fetch_assoc()) {
+                            echo "<div class='comment'>";
+                            echo "<h3>" . $row["name"]. "</h3>Title: " . $row["title"]. "<br>Date: " . $row["commentdate"] . "<br>Comments: " . $row["comments"] . "<br><br>";
+                            if (isset($_SESSION['loginlevel']) && $_SESSION['loginlevel'] == 1) {
+                                echo "<form method='post'>";
+                                echo "<input type='submit' name='" . $row['ID'] . "_delete' value='Delete' style='padding: 8px; margin-bottom: 16px' class='button'>";
+                                echo "</form>";
+                            }
+                            if (isset($_SESSION['loginlevel']) && $_SESSION['loginlevel'] == 3) {
+                                echo "<form method='post' action='../week6/comment.php'>";
+                                echo "<input type='submit' name='" . $row['ID'] . "_update' value='Update' style='padding: 8px; margin-bottom: 16px' class='button'>";
+                                echo "</form>";
+                            }
+                            echo "</div>";
+                        }
+                    } else {
+                         echo "No Comments Yet!";
+                    }
+            
+                    mysqli_close($conn);
+
+                    function delete_comment($id) {
+                        echo $id;
+                    }
+                ?>
+                <br>
+                <a class='button' href="../week6/comment.php">Add a Comment</a>
+                <br>
             </div>
 
             <?php include "../../view/footer.php"; ?>
