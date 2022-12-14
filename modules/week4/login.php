@@ -10,7 +10,7 @@
         <div class="container">
             <?php
                 if (isset($_POST['username'])) {
-                    $conn = mysqli_connect("mysql.localhost", "matthewvine", "password", "matthewvine");
+                    $conn = mysqli_connect("mysql.matthewvine.site", "matthewvine", "password", "matthewvine");
                     if (!$conn) die("Connection failed: " . mysqli_connect_error());
 
                     $sql = "SELECT UserId FROM users WHERE Username = '" . $_POST['username'] . "' AND Password = '" . $_POST['password'] . "'";

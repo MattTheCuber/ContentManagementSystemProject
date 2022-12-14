@@ -24,7 +24,7 @@
                     <select name="id" onchange="employeeSelection(this.value);">
                         <option value="add">Add Employee</option>
                         <?php
-                            $conn = mysqli_connect("mysql.localhost", "matthewvine", "password", "matthewvine");
+                            $conn = mysqli_connect("mysql.matthewvine.site", "matthewvine", "password", "matthewvine");
                             if (!$conn) die("Connection failed: " . mysqli_connect_error());
 
                             $sql = "SELECT * FROM employees";

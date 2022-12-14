@@ -8,11 +8,11 @@
 <meta name="description" content="Matthew Vine's (fake) site for selling clothing for Liberty University Online's CSIS 410: D01">
 
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://matthewvine/">
+<meta property="og:url" content="https://matthewvine.site/">
 <meta property="og:title" content="Matthew Vine">
 <meta property="og:description" content="Matthew Vine's (fake) site for selling clothing for Liberty University Online's CSIS 410: D01">
 
 <meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="https://matthewvine/">
+<meta property="twitter:url" content="https://matthewvine.site/">
 <meta property="twitter:title" content="Matthew Vine">
 <meta property="twitter:description" content="Matthew Vine's (fake) site for selling clothing for Liberty University Online's CSIS 410: D01">

@@ -15,7 +15,7 @@
 
                 <div style="font-size: 20px; width: 75%; margin-left: auto; margin-right: auto">
                     <?php
-                        $conn = mysqli_connect("mysql.localhost", "matthewvine", "password", "matthewvine");
+                        $conn = mysqli_connect("mysql.matthewvine.site", "matthewvine", "password", "matthewvine");
                         if (!$conn) die("Connection failed: " . mysqli_connect_error());
                         
                         $sql = "SELECT data FROM content WHERE page = 'our_story'";

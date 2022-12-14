@@ -14,7 +14,7 @@
                 <h1>Our Team</h1>
 
                 <?php
-                    $conn = mysqli_connect("mysql.localhost", "matthewvine", "password", "matthewvine");
+                    $conn = mysqli_connect("mysql.matthewvine.site", "matthewvine", "password", "matthewvine");
                     if (!$conn) die("Connection failed: " . mysqli_connect_error());
 
                     $grid = array(
