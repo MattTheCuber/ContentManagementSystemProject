@@ -93,7 +93,7 @@
                         while($row = $result->fetch_assoc()) {
                             echo "<div class='comment'>";
                             echo "<h3>" . $row["name"]. "</h3>Title: " . $row["title"]. "<br>Date: " . $row["commentdate"] . "<br>Comments: " . $row["comments"] . "<br><br>";
-                            if (isset($_SESSION['loginlevel']) && ($_SESSION['loginlevel'] == 1 || $_SESSION['loginlevel'] == 2)) {
+                            if (isset($_SESSION['loginlevel']) && $_SESSION['loginlevel'] == 1) {
                                 echo "<form method='post'>";
                                 echo "<input type='submit' name='" . $row['ID'] . "_delete' value='Delete' style='padding: 8px; margin-bottom: 16px' class='button'>";
                                 echo "</form>";
