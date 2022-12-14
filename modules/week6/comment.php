@@ -8,7 +8,7 @@
     if (!$conn) die("Connection failed: " . mysqli_connect_error());
 
     if (isset($_POST['submit'])) {
-        $sql = "INSERT INTO Comments (name, title, comments)
+        $sql = "INSERT INTO comments (name, title, comments)
                 VALUES ('" . $_POST['name'] . "', '" . $_POST['title'] . "', '" . $_POST['comments'] . "')";
 
         if ($conn->query($sql) === TRUE) {
@@ -20,7 +20,7 @@
         foreach ($_POST as $key => $value) {
             if (str_contains($key, "_submit")) {
                 $id = substr($key, 0, -7);
-                $sql = "UPDATE Comments SET name='" . $_POST['name'] . "', title='" . $_POST['title'] . "', comments='" . $_POST['comments'] . "' WHERE ID=" . $id;
+                $sql = "UPDATE comments SET name='" . $_POST['name'] . "', title='" . $_POST['title'] . "', comments='" . $_POST['comments'] . "' WHERE ID=" . $id;
 
                 if ($conn->query($sql) === TRUE) {
                     header('Location: ../week1/our_team.php');

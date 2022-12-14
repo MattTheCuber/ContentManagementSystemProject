@@ -35,7 +35,7 @@
                             }
                         } else {
                             if ($_POST["id"] == "add") {
-                                $sql = "INSERT INTO Employees (Name, Title, Department, JoinedDate, Image) 
+                                $sql = "INSERT INTO employees (Name, Title, Department, JoinedDate, Image) 
                                         VALUES ('" . $_POST["name"] . "', '" . $_POST["title"] . "', '" . $_POST["department"] . "', '" . $_POST["joinDate"] . "', NULL)";
 
                                 if ($conn->query($sql) === TRUE) {
@@ -46,7 +46,7 @@
 
                                 $id = $conn->insert_id;
                             } else {
-                                $sql = "UPDATE Employees
+                                $sql = "UPDATE employees
                                         SET Name = '" . $_POST["name"] . "', Title = '" . $_POST["title"] . "', Department = '" . $_POST["department"] . "', JoinedDate = '" . $_POST["joinDate"] . "' " .
                                     "WHERE EmployeeId = " . $_POST["id"] . "";
 
