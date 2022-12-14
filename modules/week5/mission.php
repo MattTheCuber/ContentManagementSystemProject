@@ -12,15 +12,24 @@
 
             <div class="content">
                 <h1>Mission</h1>
-                
+
                 <div style="font-size: 20px; width: 75%; margin-left: auto; margin-right: auto">
                     <?php
-                        echo("<p>Our mission is to provide our customers with the best service possible.
-                              We want to make sure that our customers are happy with their purchase and that they are satisfied with the quality of our clothing.</p>");
+                        $conn = mysqli_connect("mysql.localhost", "matthewvine", "password", "matthewvine");
+                        if (!$conn) die("Connection failed: " . mysqli_connect_error());
                         
-                        echo("<p>Our vision is to be the best clothing store in the world.
-                                 We want to be the first place that people think of when they think of clothing stores.
-                                 We want to be the best at what we do and we want to provide our customers with the best service possible.</p>");
+                        $sql = "SELECT data FROM content WHERE page = 'mission'";
+                        $result = $conn->query($sql);
+                        
+                        if ($result->num_rows > 0) {
+                            while($row = $result->fetch_assoc()) {
+                                echo $row["data"];
+                            }
+                        } else {
+                            echo "Content not found";
+                        }
+                        
+                        mysqli_close($conn);
                     ?>
                 </div>
             </div>

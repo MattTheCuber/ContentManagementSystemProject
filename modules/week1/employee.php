@@ -15,35 +15,75 @@
                 <br><br>
 
                 <?php
-                    include '../../data/employees.php';
+                    $conn = mysqli_connect("mysql.localhost", "matthewvine", "password", "matthewvine");
+                    if (!$conn) die("Connection failed: " . mysqli_connect_error());
 
                     $employee;
+                    $id;
 
                     if(isset($_POST["name"])) {
-                        $name = $_POST["employee"];
-                        if ($name != "add") {
-                            $employee = $$name;
-                            if ($_POST["name"]) $employee["Name"] = $_POST["name"];
-                            if ($_POST["title"]) $employee["Title"] = $_POST["title"];
-                            if ($_POST["department"]) $employee["Department"] = $_POST["department"];
-                            $employee["Joined Company"] = $_POST["joinDate"];
+                        if (isset($_POST["delete"])) {
+                            if ($_POST["id"] != "add") {
+                                $sql = "DELETE FROM Employees
+                                        WHERE EmployeeId = " . $_POST["id"];
+
+                                if ($conn->query($sql) === TRUE) {
+                                    echo "<p class='success'>Successfully deleted record</p>";
+                                } else {
+                                    echo "<p class='error'>Error deleting record: " . $conn->error . "</p>";
+                                }
+                            }
                         } else {
-                            $employee = array("Name" => $_POST["name"],
-                                "Title" => $_POST["title"],
-                                "Department" => $_POST["department"],
-                                "Joined Company" => $_POST["joinDate"],
-                                "Image" => "../images/placeholder.png");
+                            if ($_POST["id"] == "add") {
+                                $sql = "INSERT INTO Employees (Name, Title, Department, JoinedDate, Image) 
+                                        VALUES ('" . $_POST["name"] . "', '" . $_POST["title"] . "', '" . $_POST["department"] . "', '" . $_POST["joinDate"] . "', NULL)";
+
+                                if ($conn->query($sql) === TRUE) {
+                                    echo "<p class='success'>Successfully added record</p>";
+                                } else {
+                                    echo "<p class='error'>Error adding record: " . $conn->error . "</p>";
+                                }
+
+                                $id = $conn->insert_id;
+                            } else {
+                                $sql = "UPDATE Employees
+                                        SET Name = '" . $_POST["name"] . "', Title = '" . $_POST["title"] . "', Department = '" . $_POST["department"] . "', JoinedDate = '" . $_POST["joinDate"] . "' " .
+                                    "WHERE EmployeeId = " . $_POST["id"] . "";
+
+                                if ($conn->query($sql) === TRUE) {
+                                    echo "<p class='success'>Successfully updated record</p>";
+                                } else {
+                                    echo "<p class='error'>Error updated record: " . $conn->error . "</p>";
+                                }
+
+                                $id = $_POST["id"];
+                            }
                         }
-                    } else {
-                        $name = $_GET['name'];
-                        $employee = $$name;
+                    } else if (isset($_GET['id'])) {
+                        $id = $_GET['id'];
                     }
 
-                    echo "<img src='../" . $employee['Image'] . "' alt='" . $employee['Name'] . "'>";
-                    echo "<h1>" . ($employee['Name'] ? $employee['Name'] : "None") . "</h1>";
-                    echo "<h4>Title: " . ($employee['Title'] ? $employee['Title'] : "None") . "</h4>";
-                    echo "<h4>Department: " . ($employee['Department'] != "-" ? $employee['Department'] : "Not assigned") . "</h4>";
-                    echo "<h4>Joined Company: " . ($employee['Joined Company'] ? $employee['Joined Company'] : date("Y")) . "</h4>";
+                    if (isset($id)) {
+                        $sql = "SELECT * FROM employees WHERE EmployeeId = " . $id;
+                        $result = $conn->query($sql);
+
+                        if ($result->num_rows > 0) {
+                            $employee = $result->fetch_assoc();
+                        } else {
+                            unset($employee);
+                        }
+                    }
+
+                    if (isset($employee)) {
+                        if ($employee['Image'] == "") $employee['Image']= "placeholder.png";
+                        echo "<img src='../../images/" . $employee['Image'] . "' alt='" . $employee['Name'] . "'>";
+                        echo "<h1>" . ($employee['Name'] ? $employee['Name'] : "None") . "</h1>";
+                        echo "<h4>Title: " . ($employee['Title'] ? $employee['Title'] : "None") . "</h4>";
+                        echo "<h4>Department: " . ($employee['Department'] != "-" ? $employee['Department'] : "Not assigned") . "</h4>";
+                        echo "<h4>Joined Company: " . ($employee['JoinedDate'] ? $employee['JoinedDate'] : date("Y")) . "</h4>";
+                    }
+                    
+                    mysqli_close($conn);
                 ?>
             </div>
 

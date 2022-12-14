@@ -19,8 +19,8 @@
                         <li>Our company is based in the United States.</li>
                         <li>Our company is owned by Matthew Vine.</li>
                         <li>Our company is 100% online.</li>
-                        <li>Our company has <?php include "../../data/employees.php"; echo count($employees) ?> employees.</li>
-                        <li>Our company has <?php include "../../data/items.php"; echo count($products) ?> products.</li>
+                        <li>Our company has 6 employees.</li>
+                        <li>Our company has 10 products.</li>
                     </ul>
                 </div>
             </div>

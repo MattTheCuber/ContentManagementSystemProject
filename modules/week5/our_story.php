@@ -12,9 +12,25 @@
 
             <div class="content">
                 <h1>Out Story</h1>
-                
+
                 <div style="font-size: 20px; width: 75%; margin-left: auto; margin-right: auto">
-                    <?php echo "<p>Matthew Vine Company was founded in 2020 by Matthew Vine. We started out as a small group of people selling clothing in a mall kiosk. We decided that we wanted to build a 100% online clothing retail store. So we did.</p>" ?>
+                    <?php
+                        $conn = mysqli_connect("mysql.localhost", "matthewvine", "password", "matthewvine");
+                        if (!$conn) die("Connection failed: " . mysqli_connect_error());
+                        
+                        $sql = "SELECT data FROM content WHERE page = 'our_story'";
+                        $result = $conn->query($sql);
+                        
+                        if ($result->num_rows > 0) {
+                            while($row = $result->fetch_assoc()) {
+                                echo $row["data"];
+                            }
+                        } else {
+                            echo "Content not found";
+                        }
+
+                        mysqli_close($conn);
+                    ?>
                 </div>
             </div>
 

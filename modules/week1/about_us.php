@@ -15,12 +15,21 @@
                 
                 <div style="font-size: 20px; width: 75%; margin-left: auto; margin-right: auto">
                     <?php
-                        echo("<p>Matthew Vine company is an online e-commerce site that provides customers with high quality clothing at affordable prices.
-                                 We have been in business since 2022 and have been providing our customers with the best service possible.
-                                 We are a quite small family owned company, but we are growing every day. We are located in Anytown, USA.</p>");
+                        $conn = mysqli_connect("mysql.localhost", "matthewvine", "password", "matthewvine");
+                        if (!$conn) die("Connection failed: " . mysqli_connect_error());
                         
-                        echo("<p>Our store provides high quality and professional designed clothing to users.
-                                 We have a team of professional designers that create the best clothing possible.</p>");
+                        $sql = "SELECT data FROM content WHERE page = 'about_us'";
+                        $result = $conn->query($sql);
+                        
+                        if ($result->num_rows > 0) {
+                            while($row = $result->fetch_assoc()) {
+                                echo $row["data"];
+                            }
+                        } else {
+                            echo "Content not found";
+                        }
+                        
+                        mysqli_close($conn);
                     ?>
                 </div>
             </div>

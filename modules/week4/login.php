@@ -10,24 +10,22 @@
         <div class="container">
             <?php
                 if (isset($_POST['username'])) {
-                    if ($_POST['username'] == 'admin' && $_POST['password'] == 'admin') {
+                    $conn = mysqli_connect("mysql.localhost", "matthewvine", "password", "matthewvine");
+                    if (!$conn) die("Connection failed: " . mysqli_connect_error());
+
+                    $sql = "SELECT UserId FROM users WHERE Username = '" . $_POST['username'] . "' AND Password = '" . $_POST['password'] . "'";
+                    $result = $conn->query($sql);
+
+                    if ($result->num_rows > 0) {
+                    $data = $result->fetch_assoc();
                         $_SESSION['username'] = $_POST['username'];
-                        $_SESSION['loginlevel'] = 1;
-                        
-                        echo '<p class="success">You have successfully logged in as an administrator</p>';
-                    } else if ($_POST['username'] == 'publisher' && $_POST['password'] == 'publisher') {
-                        $_SESSION['username'] = $_POST['username'];
-                        $_SESSION['loginlevel'] = 2;
-                        
-                        echo '<p class="success">You have successfully logged in as a publisher</p>';
-                    } else if ($_POST['username'] == 'customer' && $_POST['password'] == 'customer') {
-                        $_SESSION['username'] = $_POST['username'];
-                        $_SESSION['loginlevel'] = 3;
-                        
-                        echo '<p class="success">You have successfully logged in as a customer</p>';
+                        $_SESSION['loginlevel'] = $data['UserId'];
+                        echo '<p class="success">You have successfully logged in as ' . $_POST['username'] . '</p>';
                     } else {
                         echo '<p class="error">Incorrect username or password</p>';
                     }
+                    
+                    mysqli_close($conn);
                 }
             ?>
 

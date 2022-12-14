@@ -3,5 +3,5 @@
    unset($_SESSION["username"]);
    unset($_SESSION["loginlevel"]);
 
-   header('Location: https://matthewvine.site');
+   header('Location: https://matthewvine');
 ?>

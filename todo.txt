@@ -1,0 +1,5 @@
+TODO:
+ - Include screenshots of the database tables in Zip file
+
+mysqli_connect("localhost" <-> mysqli_connect("mysql.localhost 
+//localhost -> //matthewvine

@@ -4,7 +4,7 @@
         header('Location: ../week4/login.php');
     }
 
-    $conn = mysqli_connect("mysql.matthewvine.site", "matthewvine", "password", "matthewvine");
+    $conn = mysqli_connect("mysql.localhost", "matthewvine", "password", "matthewvine");
     if (!$conn) die("Connection failed: " . mysqli_connect_error());
 
     if (isset($_POST['submit'])) {

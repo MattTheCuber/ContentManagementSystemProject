@@ -1,8 +1,8 @@
 <div class="footer">
-    <a href='https://www.facebook.com/'><img class='social-icon' src='https://matthewvine.site/images/facebook.png' alt='Facebook'></a>
-    <a href='https://www.instagram.com/'><img class='social-icon' src='https://matthewvine.site/images/instagram.webp' alt='Instagram'></a>
-    <a href='https://www.twitter.com/'><img class='social-icon' src='https://matthewvine.site/images/twitter.png' alt='Twitter'></a>
-    <a href='https://www.youtube.com/'><img class='social-icon' src='https://matthewvine.site/images/youtube.png' alt='Youtube'></a>
+    <a href='https://www.facebook.com/'><img class='social-icon' src='https://matthewvine/images/facebook.png' alt='Facebook'></a>
+    <a href='https://www.instagram.com/'><img class='social-icon' src='https://matthewvine/images/instagram.webp' alt='Instagram'></a>
+    <a href='https://www.twitter.com/'><img class='social-icon' src='https://matthewvine/images/twitter.png' alt='Twitter'></a>
+    <a href='https://www.youtube.com/'><img class='social-icon' src='https://matthewvine/images/youtube.png' alt='Youtube'></a>
     <br>
     <p>Matthew Vine &copy; 2022</p>
     <?php

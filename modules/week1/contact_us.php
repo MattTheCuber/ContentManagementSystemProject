@@ -12,17 +12,41 @@
 
             <div class="content">
                 <h1>Contact Us</h1>
-                
-                <?php
-                    echo("<h3>Email</h3>");
-                    echo("support@matthewvine.site");
+            
+                <div style="font-size: 20px; width: 75%; margin-left: auto; margin-right: auto">
+                    <?php
+                        $conn = mysqli_connect("mysql.localhost", "matthewvine", "password", "matthewvine");
+                        if (!$conn) die("Connection failed: " . mysqli_connect_error());
 
-                    echo("<br><br><h3>Phone Numbers</h3>");
-                    echo("Support: 555-555-5551 <br> Sales: 555-555-5552 <br> Billing: 555-555-5553");
-                    
-                    echo("<br><br><h3>Address</h3>");
-                    echo("12345 Main St. <br> Anytown, USA 12345");
-                ?>
+                        if (isset($_POST["submit"])) {
+                            $sql = "UPDATE content SET data = '" . str_replace("'", "''", $_POST["edit_text"]) . "' WHERE page = 'contact_us'";
+                            $result = $conn->query($sql);
+                        }
+                        
+                        $sql = "SELECT data FROM content WHERE page = 'contact_us'";
+                        $result = $conn->query($sql);
+                        
+                        if ($result->num_rows > 0) {
+                            if (isset($_POST["edit"])) echo "<form action='" . htmlspecialchars($_SERVER["PHP_SELF"]) . "' method='post'>";
+                            while($row = $result->fetch_assoc()) {
+                                if (isset($_POST["edit"])) echo "<textarea name='edit_text' rows='20' style='width: 100%' autofocus wrap>";
+                                echo $row["data"];
+                                if (isset($_POST["edit"])) echo "</textarea>";
+                            }
+
+                            if (isset($_SESSION['loginlevel']) && ($_SESSION['loginlevel'] == 1 || $_SESSION['loginlevel'] == 2)) {
+                                if (!isset($_POST["edit"])) echo "<form action='" . htmlspecialchars($_SERVER["PHP_SELF"]) . "' method='post'>";
+                                if (isset($_POST["edit"])) echo "<input class='button' style='margin-top: 16px' type='submit' name='submit'>";
+                                else echo "<input class='button' style='margin-top: 16px' name='edit' type='submit' name='edit' value='Edit Page'>";
+                                echo "</form>";
+                            }
+                        } else {
+                            echo "Content not found";
+                        }
+                        
+                        mysqli_close($conn);
+                    ?>
+                </div>
             </div>
 
             <?php include "../../view/footer.php"; ?>

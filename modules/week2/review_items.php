@@ -19,29 +19,41 @@
                     <br><br>
 
                     <?php 
-                        include '../../data/items.php';
+                        include '../../data/quiz.php';
 
-                        foreach ($products as $product) {
-                            echo "<h1>" . $$product["Name"] . "</h1>";
-                            echo "<img style='width: 100px' src='../" . $$product['Image'] . "' alt='" . $$product["Name"] . "'>";
-                            echo "<p>" . $$product["Description"] . "</p>";
-                            echo "<br>";
+                        $conn = mysqli_connect("mysql.localhost", "matthewvine", "password", "matthewvine");
+                        if (!$conn) die("Connection failed: " . mysqli_connect_error());
 
-                            foreach ($questions as $question) {
-                                echo "<h3>" . $question["title"] . "</h3>";
+                        $sql = "SELECT * FROM products";
+                        $result = $conn->query($sql);
 
-                                $type = "type" . $question["type"];
-                                echo "<input type='radio' name='" . $product . '_' . $question["id"] . "' value='0'> " . $$type[0];
-                                echo "<input type='radio' name='" . $product . '_' . $question["id"] . "' value='1'> " . $$type[1];
-                                echo "<input type='radio' name='" . $product . '_' . $question["id"] . "' value='2'> " . $$type[2];
-                                echo "<input type='radio' name='" . $product . '_' . $question["id"] . "' value='3'> " . $$type[3];
-                                echo "<input type='radio' name='" . $product . '_' . $question["id"] . "' value='4'> " . $$type[4];
-
-                                echo "<br><br>";
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                echo "<h1>" . $row["Name"] . "</h1>";
+                                echo "<img style='width: 100px' src='../../images/" . $row['Image'] . "' alt='" . $row["Name"] . "'>";
+                                echo "<p>" . $row["Description"] . "</p>";
+                                echo "<br>";
+    
+                                foreach ($questions as $question) {
+                                    echo "<h3>" . $question["title"] . "</h3>";
+    
+                                    $type = "type" . $question["type"];
+                                    echo "<input type='radio' name='" . $row["ProductId"] . '_' . $question["id"] . "' value='0'> " . $$type[0];
+                                    echo "<input type='radio' name='" . $row["ProductId"] . '_' . $question["id"] . "' value='1'> " . $$type[1];
+                                    echo "<input type='radio' name='" . $row["ProductId"] . '_' . $question["id"] . "' value='2'> " . $$type[2];
+                                    echo "<input type='radio' name='" . $row["ProductId"] . '_' . $question["id"] . "' value='3'> " . $$type[3];
+                                    echo "<input type='radio' name='" . $row["ProductId"] . '_' . $question["id"] . "' value='4'> " . $$type[4];
+    
+                                    echo "<br><br>";
+                                }
+    
+                                echo "<hr style='width: 66%'>";
                             }
-
-                            echo "<hr style='width: 66%'>";
+                        } else {
+                            echo "No products found";
                         }
+                        
+                        mysqli_close($conn);
                     ?>
 
                     <br>
