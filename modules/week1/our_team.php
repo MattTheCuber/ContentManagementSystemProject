@@ -76,7 +76,7 @@
                     foreach ($_POST as $key => $value) {
                         if (str_contains($key, "_delete")) {
                             $id = substr($key, 0, -7);
-                            $sql = "DELETE FROM Comments WHERE ID=" . $id;
+                            $sql = "DELETE FROM comments WHERE ID=" . $id;
 
                             if ($conn->query($sql) === TRUE) {
                                 echo "<p class='success'>Successfully deleted record</p>";
@@ -86,7 +86,7 @@
                         }
                     }
                     
-                    $sql = "SELECT * FROM Comments";
+                    $sql = "SELECT * FROM comments";
                     $result = $conn->query($sql);
                     
                     if ($result->num_rows > 0) {

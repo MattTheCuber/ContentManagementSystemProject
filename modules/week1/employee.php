@@ -24,7 +24,7 @@
                     if(isset($_POST["name"])) {
                         if (isset($_POST["delete"])) {
                             if ($_POST["id"] != "add") {
-                                $sql = "DELETE FROM Employees
+                                $sql = "DELETE FROM employees
                                         WHERE EmployeeId = " . $_POST["id"];
 
                                 if ($conn->query($sql) === TRUE) {
